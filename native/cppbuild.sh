@@ -89,8 +89,8 @@ for PROJECT in ${PROJECTS[@]}; do
     else
         echo "Installing \"$PROJECT\""
         mkdir -p "$PROJECT/cppbuild"
-        pushd "$PROJECT"
-        source "cppbuild.sh"
+        pushd "$PROJECT/cppbuild"
+        source "../cppbuild.sh"
         popd
     fi
 
