@@ -31,8 +31,11 @@ case $KERNEL in
         ;;
 esac
 case $ARCH in
-    arm*)
-        ARCH=arm
+    arm32)
+        ARCH=arm32
+        ;;
+    arm64)
+        ARCH=arm64
         ;;
     i386|i486|i586|i686)
         ARCH=x86
