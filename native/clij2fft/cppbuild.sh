@@ -24,12 +24,12 @@ case $PLATFORM in
     macosx-*)
         # the following line might not be necessary if make would be properly installed in the path
         CMAKE=/Applications/CMake.app/Contents/bin/cmake
-        
+
+        # location of clFFT installed via homebrew: brew install clfft
         $CMAKE -DCMAKE_BUILD_TYPE=Release \
                -DCMAKE_INSTALL_PREFIX="../../../lib/macosx/" \
                -DCMAKE_CXX_COMPILER="g++" \
                -DCMAKE_CUDA_HOST_COMPILER="g++" \
-				# location of clFFT installed via homebrew: brew install clfft
 	  			-DCLFFT_LIBRARY_DIR="/opt/homebrew/opt/clfft/lib" ..
         ;;
     windows-x86_64)
