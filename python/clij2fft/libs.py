@@ -2,6 +2,7 @@ from ctypes import *
 import numpy as np
 import numpy.ctypeslib as npct
 import os
+import sys
 
 def getlib():
     """
@@ -16,10 +17,11 @@ def getlib():
 
     if (os.name=='posix'):
         clij2fft=CDLL('libclij2fft.so', mode=RTLD_GLOBAL)
+        if (sys.platform=='darwin'):
+            clij2fft=CDLL('libclij2fft.dylib', mode=RTLD_GLOBAL)
     # if not posix assume windows
     else:
         clij2fft=CDLL('clij2fft.dll', mode=RTLD_GLOBAL)
-    # TODO Mac and Mac M1
     
     array_3d_float = npct.ndpointer(dtype=np.float32, ndim=3 , flags='CONTIGUOUS')
 
