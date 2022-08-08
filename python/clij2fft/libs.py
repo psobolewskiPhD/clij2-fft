@@ -14,11 +14,10 @@ def getlib():
     Returns:
         [cdll]: cdll containing clij2 functions
     """
-
-    if (os.name=='posix'):
+    if os.name=='posix' and sys.platform!='darwin':
         clij2fft=CDLL('libclij2fft.so', mode=RTLD_GLOBAL)
-        if (sys.platform=='darwin'):
-            clij2fft=CDLL('libclij2fft.dylib', mode=RTLD_GLOBAL)
+    elif os.name=='posix' and sys.platform =='darwin':
+        clij2fft=CDLL(os.path.dirname(__file__) + os.path.sep + '../lib/macosx/libclij2fft.dylib', mode=RTLD_GLOBAL)
     # if not posix assume windows
     else:
         clij2fft=CDLL('clij2fft.dll', mode=RTLD_GLOBAL)
